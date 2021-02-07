@@ -56,6 +56,7 @@ route::post('store/product','productController@storeProduct');
 route::get('manage/product','productController@manageProduct')->name('manage.product');
 route::get('edit/product/{id}','productController@editProduct');
 route::post('update/product/{id}','productController@updateProduct');
+route::post('update/image/{id}','productController@updateImage');
 route::get('delete/product/{id}','productController@deleteProduct');
 route::get('inactive/product/{id}','productController@inactiveProduct');
 route::get('active/product/{id}','productController@activeProduct');

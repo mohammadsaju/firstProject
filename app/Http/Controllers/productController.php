@@ -108,7 +108,142 @@ class productController extends Controller
         return redirect()->route('manage.product')->with('success', 'product updated');
     }
 
-     
+     //==============update image=================//
+    public function updateImage(Request $request,$id){
+        // $request->validate([
+        //     'image_one'  => 'required | mimes: jpg,jpeg,png,gif',
+        //     'image_two'  => 'required | mimes: jpg,jpeg,png,gif',
+        //     'image_three'  => 'required | mimes: jpg,jpeg,png,gif',
+        // ]);
+        $old_one = $request->img_one;
+        $old_two = $request->img_two;
+        $old_three = $request->img_three;
+      
+        //===========image one and two===========//
+        if($request->has('image_one') && $request->has('image_two')){
+            unlink($old_one);
+            unlink($old_two);
+            $img_one = $request->file('image_one');
+            $name_gen = hexdec(uniqid()) . '.' . $img_one->getClientOriginalExtension();
+            Image::make($img_one)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_one = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_one'  => $image_url_one,
+                'created_at' => Carbon::now(),
+            ]);
+            $img_two = $request->file('image_two');
+            $name_gen = hexdec(uniqid()) . '.' . $img_two->getClientOriginalExtension();
+            Image::make($img_two)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_two = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_two'  => $image_url_two,
+                'created_at' => Carbon::now(),
+            ]);
+            return redirect()->route('manage.product')->with('success', 'image uploaded');
+        }
+        //=============image one and three===============//
+        if($request->has('image_one') && $request->has('image_three')){
+            unlink($old_one);
+            unlink($old_three);
+            $img_one = $request->file('image_one');
+            $name_gen = hexdec(uniqid()) . '.' . $img_one->getClientOriginalExtension();
+            Image::make($img_one)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_one = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_one'  => $image_url_one,
+                'created_at' => Carbon::now(),
+            ]);
+            $img_three = $request->file('image_three');
+            $name_gen = hexdec(uniqid()) . '.' . $img_three->getClientOriginalExtension();
+            Image::make($img_three)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_three = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_three'  => $image_url_three,
+                'created_at' => Carbon::now(),
+            ]);
+            return redirect()->route('manage.product')->with('success', 'image uploaded');
+        }
+        //===========image one and two and three=============//
+        if($request->has('image_one') && $request->has('image_two') && $request->has('image_three')){
+            unlink($old_one);
+            unlink($old_two);
+            unlink($old_three);
+            $img_one = $request->file('image_one');
+            $name_gen = hexdec(uniqid()) . '.' . $img_one->getClientOriginalExtension();
+            Image::make($img_one)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_one = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_one'  => $image_url_one,
+                'created_at' => Carbon::now(),
+            ]);
+            $img_two = $request->file('image_two');
+            $name_gen = hexdec(uniqid()) . '.' . $img_two->getClientOriginalExtension();
+            Image::make($img_two)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_two = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_two'  => $image_url_two,
+                'created_at' => Carbon::now(),
+            ]);
+            $img_three = $request->file('image_three');
+            $name_gen = hexdec(uniqid()) . '.' . $img_three->getClientOriginalExtension();
+            Image::make($img_three)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_three = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_three'  => $image_url_three,
+                'created_at' => Carbon::now(),
+            ]);
+            return redirect()->route('manage.product')->with('success', 'image uploaded');
+        }
+        //==========image one=========//
+        if($request->has('image_one')){
+            unlink($old_one);
+            $img_one = $request->file('image_one');
+            $name_gen = hexdec(uniqid()) . '.' . $img_one->getClientOriginalExtension();
+            Image::make($img_one)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_one = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_one'  => $image_url_one,
+                'created_at' => Carbon::now(),
+            ]);
+            return redirect()->route('manage.product')->with('success', 'image uploaded');
+        }
+        //============image two===========//
+        if($request->has('image_two')){
+            unlink($old_two);
+            $img_two = $request->file('image_two');
+            $name_gen = hexdec(uniqid()) . '.' . $img_two->getClientOriginalExtension();
+            Image::make($img_two)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_two = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_two'  => $image_url_two,
+                'created_at' => Carbon::now(),
+            ]);
+            return redirect()->route('manage.product')->with('success', 'image uploaded');
+        }
+        //=============image three=============//
+        if($request->has('image_three')){
+            unlink($old_three);
+            $img_three = $request->file('image_three');
+            $name_gen = hexdec(uniqid()) . '.' . $img_three->getClientOriginalExtension();
+            Image::make($img_three)->resize(270, 250)->save('frontent/img/product/' . $name_gen);
+            $image_url_three = 'frontent/img/product/' . $name_gen;
+
+            product::find($id)->update([
+                'image_three'  => $image_url_three,
+                'created_at' => Carbon::now(),
+            ]);
+            return redirect()->route('manage.product')->with('success', 'image uploaded');
+        }
+    }
     //============delete product============//
     public function deleteProduct($id)
     {

@@ -97,11 +97,19 @@
 <form action="{{ url('update/image/'.$product->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
 <div class="row mt-3">
+
+  <input type="hidden" name="img_one" value="{{ $product->image_one }}">
+  <input type="hidden" name="img_two" value="{{ $product->image_two }}">
+  <input type="hidden" name="img_three" value="{{ $product->image_three }}">
+
   <div class="col-lg-4">
     <div class="form-group mg-b-10-force">
       <label class="form-control-label">image_one<span class="tx-danger">*</span></label>
       <input class="form-control" type="file" name="image_one">
       <span class="text-danger">@error('image_one') {{ $message }} @enderror</span>
+      <br>
+      <img src="{{ asset($product->image_one) }}" style="height: 250px; width: 230px;" alt="">
+     
     </div>
   </div><!-- col-8 -->
   <div class="col-lg-4">
@@ -109,6 +117,9 @@
       <label class="form-control-label">image_two<span class="tx-danger">*</span></label>
       <input class="form-control" type="file" name="image_two">
       <span class="text-danger">@error('image_two') {{ $message }} @enderror</span>
+      <br>
+      <img src="{{ asset($product->image_two) }}" style="height: 250px; width: 230px;" alt="">
+     
     </div>
   </div><!-- col-8 -->
   <div class="col-lg-4">
@@ -116,6 +127,9 @@
       <label class="form-control-label">image_three<span class="tx-danger">*</span></label>
       <input class="form-control" type="file" name="image_three">
       <span class="text-danger">@error('image_three') {{ $message }} @enderror</span>
+      <br>
+      <img src="{{ asset($product->image_three) }}" style="height: 250px; width: 230px;" alt="">
+      
     </div>
   </div><!-- col-8 -->
 </div>
@@ -124,7 +138,7 @@
     <button class="btn btn-info mg-r-5" type="submit">update</button>
   </div><!-- form-layout-footer -->
 </form>
-  
+
 </div>
 
 @endsection
