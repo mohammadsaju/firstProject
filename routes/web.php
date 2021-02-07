@@ -3,6 +3,7 @@
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\brandController;
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\couponController;
 use App\Http\Controllers\frontentController;
 use App\Http\Controllers\productController;
 use Illuminate\Support\Facades\Route;
@@ -60,4 +61,14 @@ route::post('update/image/{id}','productController@updateImage');
 route::get('delete/product/{id}','productController@deleteProduct');
 route::get('inactive/product/{id}','productController@inactiveProduct');
 route::get('active/product/{id}','productController@activeProduct');
+
+//==============COUPONS==============//
+route::get('coupon','couponController@index')->name('coupon');
+route::post('store/coupon','couponController@storeCoupon');
+route::get('edit/coupon/{id}','couponController@editCoupon');
+route::post('update/coupon/{id}','couponController@updateCoupon');
+route::get('delete/coupon/{id}','couponController@deleteCoupon');
+route::get('inactive/coupon/{id}','couponController@inactiveCoupon');
+route::get('active/coupon/{id}','couponController@activeCoupon');
+
 
