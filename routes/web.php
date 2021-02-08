@@ -73,6 +73,8 @@ route::get('delete/coupon/{id}','couponController@deleteCoupon');
 route::get('inactive/coupon/{id}','couponController@inactiveCoupon');
 route::get('active/coupon/{id}','couponController@activeCoupon');
 
+//==============frontent=============//
+
 //==============CART===============//
 route::post('add/to_cart/{id}','cartController@addCart');
 route::get('cart','cartController@cartPage');
@@ -84,4 +86,6 @@ route::post('apply/coupon','cartController@applyCoupon');
 route::get('add/to_wishlist/{id}','wishlistController@addWishlist');
 route::get('wishlist','wishlistController@wishlistPage');
 route::get('delete/wishlist/{id}','wishlistController@deleteWishlist');
+//=================product details=============//
+route::get('product/details/{id}','frontentController@productDetails');
 

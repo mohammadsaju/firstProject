@@ -18,4 +18,9 @@ class frontentController extends Controller
     public function shopPage(){
         return view('frontent_pages.shop');
     }
+
+    public function productDetails($id){
+        $product = product::find($id);
+        return view('frontent_pages.product_details',compact('product'));
+    }
 }

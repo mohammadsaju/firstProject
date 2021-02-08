@@ -68,7 +68,7 @@
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#">{{ $pro->product_name }}</a></h6>
+                            <h6><a href="{{ url('product/details/'.$pro->id) }}">{{ $pro->product_name }}</a></h6>
                             <h5>${{ $pro->product_price }}</h5>
                         </div>
                     </div>

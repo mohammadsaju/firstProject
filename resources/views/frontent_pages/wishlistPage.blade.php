@@ -109,7 +109,7 @@
                                     ${{ $wishlist->product->product_price }}
                                 </td>
                                 <td class="shoping__cart__quantity">
-                                    <form action="{{ url('add/to_cart/'.$wishlist->id) }}" method="POST">
+                                    <form action="{{ url('add/to_cart/'.$wishlist->product_id) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_price" value="{{ $wishlist->product->product_price }}">
                                          <button type="submit" class="btn btn-sm btn-info">Add to cart</button>
