@@ -58,7 +58,7 @@
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="{{ asset($pro->image_one) }}">
                             <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="{{ url('add/to_wishlist/'.$pro->id) }}"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                 <form action="{{ url('add/to_cart/'.$pro->id) }}" method="POST">
                                     @csrf

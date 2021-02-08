@@ -46,6 +46,14 @@
       <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white">
         <div class="signin-logo tx-center tx-24 tx-bold tx-inverse">admin <span class="tx-info tx-normal">login</span></div>
         <div class="tx-center mg-b-60">To be admin you have to login</div>
+        @if( Session::has('loginError'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ session('loginError') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          @endif
     <form method="POST" action="{{ route('login') }}">
             @csrf
         <div class="form-group">
