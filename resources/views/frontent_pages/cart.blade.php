@@ -81,6 +81,14 @@
                         </button>
                       </div>
                       @endif
+                    @if( Session::has('delete'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{ session('delete') }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      @endif
                     <table>
                         <thead>
                             <tr>
@@ -129,28 +137,38 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                        Upadate Cart</a>
+                    <a href="{{ url('/') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
                 </div>
             </div>
+            @if(Session::has('coupon'))
+            @else
             <div class="col-lg-6">
                 <div class="shoping__continue">
                     <div class="shoping__discount">
                         <h5>Discount Codes</h5>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your coupon code">
+                        <form action="{{ url('apply/coupon') }}" method="POST">
+                            @csrf
+                            <input type="text" name="coupon_name" placeholder="Enter your coupon code">
                             <button type="submit" class="site-btn">APPLY COUPON</button>
                         </form>
                     </div>
                 </div>
             </div>
+            @endif
+           
             <div class="col-lg-6">
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
+                        
+                        @if(Session::has('coupon'))
                         <li>Subtotal <span>${{ $subtotal }}</span></li>
-                        <li>Total <span>$454.98</span></li>
+                        <li>discount <span>{{ Session()->get('coupon')['discount'] }}% ( {{ $discount = $subtotal * Session()->get('coupon')['discount'] / 100}} ) </span></li>
+                        <li>total <span>${{ $subtotal - $discount }}</span></li>
+                        @else
+                        <li>total <span>${{ $subtotal }}</span></li>
+                        @endif
+                        
                     </ul>
                     <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>

@@ -77,4 +77,5 @@ route::post('add/to_cart/{id}','cartController@addCart');
 route::get('cart','cartController@cartPage');
 route::get('delete/cart/{id}','cartController@deleteCart');
 route::post('update/quantity/{id}','cartController@updateQuantity');
+route::post('apply/coupon','cartController@applyCoupon');
 
