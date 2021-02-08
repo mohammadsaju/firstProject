@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\brandController;
+use App\Http\Controllers\cartController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\couponController;
 use App\Http\Controllers\frontentController;
@@ -71,4 +72,9 @@ route::get('delete/coupon/{id}','couponController@deleteCoupon');
 route::get('inactive/coupon/{id}','couponController@inactiveCoupon');
 route::get('active/coupon/{id}','couponController@activeCoupon');
 
+//==============CART===============//
+route::post('add/to_cart/{id}','cartController@addCart');
+route::get('cart','cartController@cartPage');
+route::get('delete/cart/{id}','cartController@deleteCart');
+route::post('update/quantity/{id}','cartController@updateQuantity');
 
