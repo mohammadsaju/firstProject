@@ -21,6 +21,8 @@ class frontentController extends Controller
 
     public function productDetails($id){
         $product = product::find($id);
-        return view('frontent_pages.product_details',compact('product'));
+        $category_id = $product->category_id;
+        $related_p   = product::where('category_id',$category_id)->where('id','!=',$id)->latest()->get();
+        return view('frontent_pages.product_details',compact('product','related_p'));
     }
 }

@@ -60,4 +60,11 @@ class cartController extends Controller
             return redirect()->back()->with('delete','invalid coupon name');
         }
     }
+
+    public function destroyCoupon(){
+        if(Session::has('coupon')){
+            session()->forget('coupon');
+            return redirect()->back()->with('success','coupon destroyed');
+        }
+    }
 }

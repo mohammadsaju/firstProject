@@ -4,8 +4,10 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\brandController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\couponController;
 use App\Http\Controllers\frontentController;
+use App\Http\Controllers\orderController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\wishlistController;
 use Illuminate\Support\Facades\Route;
@@ -81,6 +83,7 @@ route::get('cart','cartController@cartPage');
 route::get('delete/cart/{id}','cartController@deleteCart');
 route::post('update/quantity/{id}','cartController@updateQuantity');
 route::post('apply/coupon','cartController@applyCoupon');
+route::get('coupon/destroy','cartController@destroyCoupon');
 
 //================wishlist==============//
 route::get('add/to_wishlist/{id}','wishlistController@addWishlist');
@@ -88,4 +91,8 @@ route::get('wishlist','wishlistController@wishlistPage');
 route::get('delete/wishlist/{id}','wishlistController@deleteWishlist');
 //=================product details=============//
 route::get('product/details/{id}','frontentController@productDetails');
+//=====================checkout========================//
+route::get('product/checkout','checkoutController@index');
+route::post('store/order','orderController@storeOrder');
+route::get('success','orderController@success')->name('success');
 
