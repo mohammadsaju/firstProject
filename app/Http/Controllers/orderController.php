@@ -72,4 +72,26 @@ class orderController extends Controller
     public function success(){
         return view('frontent_pages.order_success');
     }
+
+    //===============admin orders view====================//
+    public function index(){
+        $orders = order::latest()->get();
+        return view('admin.order.index',compact('orders'));
+    }
+
+    public function viewOrder($id){
+        $order = order::find($id);
+        $order_item = order_item::where('order_id',$id)->get();
+        $shipping = shipping::where('order_id',$id)->first();
+        return view('admin.order.view',compact('order','order_item','shipping'));
+    }
+
+    public function userProfile(){
+        return view('frontent_pages.userProfile');
+    }
+
+    public function userOrder(){
+        $orders = order::where('user_id',Auth::id())->latest()->get();
+        return view('frontent_pages.userOrder',compact('orders'));
+    }
 }

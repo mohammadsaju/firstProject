@@ -74,8 +74,15 @@ route::post('update/coupon/{id}','couponController@updateCoupon');
 route::get('delete/coupon/{id}','couponController@deleteCoupon');
 route::get('inactive/coupon/{id}','couponController@inactiveCoupon');
 route::get('active/coupon/{id}','couponController@activeCoupon');
+//==============orders===================//
+route::get('orders','orderController@index')->name('orders');
+route::get('view/order/{id}','orderController@viewOrder');
+route::get('user/profile','orderController@userProfile');
 
 //==============frontent=============//
+route::get('shop/page','frontentController@shopGrid');
+route::get('category/wise/product/{id}','frontentController@catProduct');
+
 
 //==============CART===============//
 route::post('add/to_cart/{id}','cartController@addCart');
@@ -95,4 +102,5 @@ route::get('product/details/{id}','frontentController@productDetails');
 route::get('product/checkout','checkoutController@index');
 route::post('store/order','orderController@storeOrder');
 route::get('success','orderController@success')->name('success');
+route::get('user/orders','orderController@userOrder');
 

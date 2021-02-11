@@ -12,4 +12,8 @@ class order_item extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function product(){
+        return $this->belongsTo(product::class,'product_id');
+    }
 }

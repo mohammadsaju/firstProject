@@ -10,7 +10,7 @@ class frontentController extends Controller
 {
     public function index(){
         $products = product::where('status',1)->latest()->get();
-        $productss = product::where('status',1)->latest()->limit(3)->get();
+        $productss = product::where('status',1)->latest()->get();
         $category = category::where('status',1)->latest()->get();
         return view('frontent_pages.index',compact('products','category'));
     }
@@ -24,5 +24,18 @@ class frontentController extends Controller
         $category_id = $product->category_id;
         $related_p   = product::where('category_id',$category_id)->where('id','!=',$id)->latest()->get();
         return view('frontent_pages.product_details',compact('product','related_p'));
+    }
+
+    public function shopGrid(){
+        $categories = category::where('status',1)->latest()->get();
+        $products   = product::latest()->paginate(3);
+       
+        return view('frontent_pages.shopPage',compact('categories','products'));
+    }
+
+    public function catProduct($id){
+        $products = product::where('category_id',$id)->latest()->paginate(3);
+        $categories = category::where('status',1)->latest()->get();
+        return view('frontent_pages.category_product',compact('products','categories'));
     }
 }

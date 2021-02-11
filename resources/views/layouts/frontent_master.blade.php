@@ -62,7 +62,7 @@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="">Shop</a></li>
+                <li><a href="{{ url('shop/page') }}">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Shop Details</a></li>
@@ -123,7 +123,7 @@
                             </div>
                             @auth
                             <div class="header__top__right__auth">
-                                <a href="{{ route('home') }}"><i class="fa fa-user"></i> My account</a>
+                                <a href="{{ url('user/profile') }}"><i class="fa fa-user"></i> User Profile</a>
                             </div>
                             @else
                             <div class="header__top__right__auth">
@@ -150,7 +150,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li><a href="{{ url('shop/page') }}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -203,7 +203,7 @@
                         @endphp
                         <ul>
                             @foreach ($categoriess as $item)
-                            <li><a href="#">{{ $item->category_name }}</a></li>
+                            <li><a href="{{ url('category/wise/product/'.$item->id) }}">{{ $item->category_name }}</a></li>
                             @endforeach
                         </ul>
                     </div>

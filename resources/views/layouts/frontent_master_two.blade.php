@@ -121,12 +121,20 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
+                            @auth
+                            <div class="header__top__right__auth">
+                                <a href="{{ route('home') }}"><i class="fa fa-user"></i>My Account</a>
+                            </div>
+
+                            @else
                             <div class="header__top__right__auth">
                                 <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
                             </div>
                             <div class="header__top__right__auth">
                                 <a href="{{ route('register') }}"><i class="fa fa-user"></i> Register</a>
                             </div>
+                            @endauth
+                            
                         </div>
                     </div>
                 </div>
@@ -143,7 +151,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li><a href="{{ url('shop/page') }}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
